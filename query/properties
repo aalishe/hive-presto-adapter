@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [[ -z "${REEVE_TAG_HIVE_ROLE}" ]]; then
+  echo "I'm not a Hive node, ignoring properties request."
+  exit 0
+fi
+
+if [[ "${REEVE_TAG_PRESTO_ADAPTER}" != "hive" ]]; then
+  echo "I'm not a Presto Hive Adapter node, ignoring properties request."
+  exit 0
+fi
+
+echo -n "connector.name=hive-cdh4;"
+echo -n "hive.metastore.uri=thrift://example.net:9083;"
